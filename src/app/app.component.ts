@@ -8,7 +8,8 @@ import { Course } from "./model/course";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  coreCourse = COURSES[0];
-  rxjsCourse = COURSES[1];
-  ngrxCourse = COURSES[2];
+  courses = COURSES;
+  onCourseSelected(event) {
+    console.log("App level", event);
+  }
 }

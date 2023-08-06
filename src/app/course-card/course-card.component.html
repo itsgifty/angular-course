@@ -1,10 +1,16 @@
 <div class="courses">
-  <div class="course-card">
-    <div class="course-title">{{ course.description }}</div>
-    <img width="300" alt="Angular Logo" src="{{ course.iconUrl }}" />
-
+  <div class="course-card" *ngIf="course">
+    <div class="course-title">{{ cardIndex || course.description }}</div>
+    <ng-content select="course-image"></ng-content>
     <div class="course-description">
       {{ course.longDescription }}
     </div>
+
+    <div class="course-category" [ngSwitch]="course.category">
+      <div class="category" *ngSwitchCase="'BEGINNER'">BEGINNER</div>
+      <div class="category" *ngSwitchCase="'INTERMEDIATE'">INTERMEDIATE</div>
+      <div class="category" *ngSwitchCase="'ADVANCED'">ADVANCED</div>
+    </div>
+    <button (click)="onCourseView()">View Course</button>
   </div>
 </div>
